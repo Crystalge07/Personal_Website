@@ -6,7 +6,6 @@ function shouldShowDate(item, sectionName) {
 
 export default function DetailOverlay({ card, onClose }) {
   const isOpen = card !== null;
-  const isWhoAmI = card?.item?.title === 'Who Am I';
 
   function handleOverlayClick(e) {
     if (e.target === e.currentTarget) {
@@ -27,7 +26,7 @@ export default function DetailOverlay({ card, onClose }) {
 
   return (
     <div id="detailOverlay" className="show" aria-live="polite" onClick={handleOverlayClick}>
-      <div id="detailPanel" className={isWhoAmI ? 'who-am-i-mode' : 'compact-mode'}>
+      <div id="detailPanel" className="compact-mode">
         <div className="kicker">{con.name}</div>
         <div className="title">{item.title}</div>
         {showDate ? <div className="date">{item.dates}</div> : null}

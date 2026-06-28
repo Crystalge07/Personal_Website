@@ -233,7 +233,7 @@ function getZoomedSectionTitleWorld(focus) {
 function hideCard() {
   selectedItem = null;
   detailOverlay.classList.remove('show');
-  detailPanel.classList.remove('who-am-i-mode', 'compact-mode');
+  detailPanel.classList.remove('compact-mode');
 }
 function showCard(con, item) {
   selectedItem = { con, item };
@@ -245,13 +245,7 @@ function showCard(con, item) {
     `<div class="title">${item.title}</div>` +
     (shouldShowDate ? `<div class="date">${item.dates}</div>` : '') +
     `<div class="desc">${item.desc}</div>`;
-  if (item.title === 'Who Am I') {
-    detailPanel.classList.add('who-am-i-mode');
-    detailPanel.classList.remove('compact-mode');
-  } else {
-    detailPanel.classList.remove('who-am-i-mode');
-    detailPanel.classList.add('compact-mode');
-  }
+  detailPanel.classList.add('compact-mode');
   detailOverlay.classList.add('show');
 }
 

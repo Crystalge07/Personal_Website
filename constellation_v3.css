@@ -97,10 +97,6 @@ html, body {
   text-decoration-color: rgba(55, 58, 72, 0.65);
 }
 
-#detailPanel.who-am-i-mode {
-  overflow: hidden;
-}
-
 #detailPanel.compact-mode {
   width: min(520px, 72vw);
   min-height: unset;
@@ -134,9 +130,10 @@ html, body {
   margin-bottom: 4px;
 }
 
-#detailPanel.who-am-i-mode .desc {
-  margin-top: 16px;
-  padding-top: 16px;
+#detailPanel.compact-mode .who-am-i-layout .bio-side {
+  padding: 0 0 0 14px;
+  font-size: clamp(14px, 1.2vw, 16px);
+  line-height: 1.55;
 }
 
 .who-am-i-layout {
