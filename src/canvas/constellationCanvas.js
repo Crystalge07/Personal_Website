@@ -11,7 +11,11 @@ import { createSceneData } from '../data/constellationData.js';
  */
 export function initConstellationCanvas(canvas, callbacks) {
   const ctx = canvas.getContext('2d');
+  const REF_W = 1400;
+  const REF_H = 900;
+  const BASE_HIT_RADIUS = 198;
   let W = 1400, H = 900;
+  let starScale = 1;
 
   let earthCX = W / 2, earthCY = H + 1800, earthRX = W * 2.2, earthRY = 2000;
   let wg = null;
@@ -66,14 +70,20 @@ export function initConstellationCanvas(canvas, callbacks) {
       con.stars = centeredStars.map((s) => ({ x: s.x + spreadOffsetX, y: s.y }));
       con.cx = con.stars.reduce((sum, p) => sum + p.x, 0) / con.stars.length;
       con.cy = con.stars.reduce((sum, p) => sum + p.y, 0) / con.stars.length;
+      con.hitRadius = BASE_HIT_RADIUS * starScale;
     });
   }
 
   function setupCanvas() {
     W = Math.max(960, window.innerWidth);
     H = Math.max(620, window.innerHeight);
-    canvas.width = W;
-    canvas.height = H;
+    starScale = Math.min(W / REF_W, H / REF_H);
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    canvas.style.width = `${W}px`;
+    canvas.style.height = `${H}px`;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     earthCX = W / 2;
     earthCY = H + 1860;
     earthRX = W * 2.2;
@@ -98,10 +108,10 @@ export function initConstellationCanvas(canvas, callbacks) {
     ctx.fillRect(0, 0, W, H);
 
     bgStars.forEach((s) => {
-      const pulse = 0.76 + 0.24 * Math.sin(t * s.speed + s.phase);
+      const pulse = 0.72 + 0.28 * Math.sin(t * s.speed + s.phase);
       ctx.beginPath();
-      ctx.arc(s.x * W, s.y * H, s.r * pulse, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,255,255,${s.a * (0.9 + (pulse - 0.76) * 1.35)})`;
+      ctx.arc(s.x * W, s.y * H, s.r * pulse * starScale, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${s.a * (0.96 + (pulse - 0.72) * 1.42)})`;
       ctx.fill();
     });
 
@@ -275,7 +285,7 @@ export function initConstellationCanvas(canvas, callbacks) {
       let hit = null;
       con.items.forEach((item) => {
         const sp = getScreenXY(con.stars[item.star].x, con.stars[item.star].y);
-        if (Math.hypot(mouse.x - sp.x, mouse.y - sp.y) < 40) hit = item;
+        if (Math.hypot(mouse.x - sp.x, mouse.y - sp.y) < 40 * starScale) hit = item;
       });
       if (hit) {
         showCard(con, hit);
@@ -440,9 +450,9 @@ export function initConstellationCanvas(canvas, callbacks) {
         const isLabeledStar = con.labeledStars.includes(si);
         const isZoomedStar = activeConstellation === ci && zoomProgress > 0.65 && con.items.some((item) => item.star === si);
         const twinkle = isLabeledStar ? (0.9 + 0.1 * Math.sin(t * 2.2 + si * 1.7 + ci * 0.9)) : 1;
-        const rad = isZoomedStar ? 4.7 : (isLabeledStar ? 3.7 : 2.6);
+        const rad = (isZoomedStar ? 4.7 : (isLabeledStar ? 3.7 : 2.6)) * starScale;
         if (isLabeledStar) {
-          const glowR = 18;
+          const glowR = 18 * starScale;
           const softGlow = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, glowR);
           softGlow.addColorStop(0, `rgba(180,205,255,${0.48 * alpha * twinkle})`);
           softGlow.addColorStop(1, 'rgba(0,0,0,0)');

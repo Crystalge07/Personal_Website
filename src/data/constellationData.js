@@ -1,13 +1,13 @@
 export function createSceneData() {
   const bgStars = Array.from({ length: 320 }, () => {
-    const r = Math.random() < 0.05 ? Math.random() * 1.9 + 1.0 : Math.random() * 1.15 + 0.42;
+    const r = Math.random() < 0.05 ? Math.random() * 2.1 + 1.12 : Math.random() * 1.28 + 0.52;
     const depth = Math.pow(Math.random(), 1.8) * 0.9 + 0.05;
     return {
       x: Math.random(), y: Math.random() * 0.82,
       r,
-      a: Math.random() * 0.5 + 0.3,
+      a: Math.random() * 0.42 + 0.44,
       phase: Math.random() * Math.PI * 2,
-      speed: 0.35 + Math.random() * 0.7,
+      speed: 0.58 + Math.random() * 1.02,
       depth
     };
   });
