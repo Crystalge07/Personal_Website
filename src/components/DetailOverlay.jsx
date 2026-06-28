@@ -27,7 +27,7 @@ export default function DetailOverlay({ card, onClose }) {
 
   return (
     <div id="detailOverlay" className="show" aria-live="polite" onClick={handleOverlayClick}>
-      <div id="detailPanel" className={isWhoAmI ? 'who-am-i-mode' : undefined}>
+      <div id="detailPanel" className={isWhoAmI ? 'who-am-i-mode' : 'compact-mode'}>
         <div className="kicker">{con.name}</div>
         <div className="title">{item.title}</div>
         {showDate ? <div className="date">{item.dates}</div> : null}

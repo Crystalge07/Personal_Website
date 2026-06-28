@@ -36,11 +36,8 @@ export function createSceneData() {
       edges: [[0, 5], [5, 1], [1, 2], [2, 3], [3, 4], [4, 5], [1, 4]],
       items: [
         { star: 0, label: 'Private Equity Analyst', title: 'Private Equity Analyst @ Solen Software Group', dates: 'May 2026 - August 2026', desc: 'Incoming in-person 16-week private equity internship focused on deal sourcing, portfolio management, and financial analysis' },
-        { star: 2, label: 'Director of Finance', title: 'Director of Finance @ Western Entrepreneurship Association', dates: 'September 2025 - April 2026', desc: 'Developed motion-heavy narrative experiences that united visual direction with web tech.' },
         { star: 1, label: 'Data Analyst', title: 'Data Analyst @ Autumn', dates: 'January 2026 - August 2024', desc: 'Led interaction design and prototyping for multi-step user journeys and growth surfaces.' },
-        { star: 3, label: 'Finance Executive', title: 'Finance Executive @ Taiwanese Association at Western', dates: '', desc: 'Directed budgeting, reimbursements, and financial reporting to sustain a vibrant cultural student community.' },
-        { star: 4, label: 'Founder and President', title: 'Founder and President @ King FBLC', dates: '', desc: 'I founded this chapter from the ground up and scaled it to 100+ members across schools in the GTA, recruiting and leading a team of 20+ executives to build and deliver a comprehensive business education curriculum. Under my leadership the chapter earned 3 national-level chapter awards and 18 national-level event wins!' },
-        { star: 5, label: 'Director of Projects', title: 'Director of Projects @ Western Founder\'s Network', dates: 'September 2025 - April 2026', desc: 'Partnered with teams on rapid concept-to-launch builds across branding and digital products.' },
+        { star: 2, label: 'Product and Software Developer', title: 'Product and Software Developer', dates: '', desc: '' },
       ]
     },
     {
@@ -53,7 +50,7 @@ export function createSceneData() {
       items: [
         { star: 0, label: 'Optimized Browser', title: 'Optimized Browser', dates: 'Project', desc: 'A design system concept focused on expressive typography and modular product primitives.' },
         { star: 2, label: 'PoliTalk', title: 'PoliTalk', dates: 'Project', desc: 'An ambient finance dashboard with cinematic data storytelling and spatial interaction cues.' },
-        { star: 3, label: 'Get Home Safe', title: 'Get Home Safe', dates: 'Project', desc: 'A reflective writing app featuring lightweight prompts and a calm, low-contrast visual language.' }
+        { star: 3, label: 'LikeOff', title: 'LikeOff', dates: 'Project', desc: '' }
       ]
     }
   ];

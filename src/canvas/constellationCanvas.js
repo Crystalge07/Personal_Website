@@ -489,9 +489,9 @@ export function initConstellationCanvas(canvas, callbacks) {
         const labelAlpha = (zoomProgress - 0.68) / 0.32;
         con.items.forEach((item) => {
           const s = con.stars[item.star];
-          ctx.font = '500 19px "Cormorant Garamond", serif';
+          ctx.font = '500 14px "Cormorant Garamond", serif';
           ctx.fillStyle = `rgba(222,230,252,${0.9 * labelAlpha})`;
-          ctx.fillText(item.label, s.x, s.y - 14);
+          ctx.fillText(item.label, s.x, s.y - 11);
         });
       }
     });

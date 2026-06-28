@@ -229,7 +229,7 @@ function getZoomedSectionTitleWorld(focus) {
 function hideCard() {
   selectedItem = null;
   detailOverlay.classList.remove('show');
-  detailPanel.classList.remove('who-am-i-mode');
+  detailPanel.classList.remove('who-am-i-mode', 'compact-mode');
 }
 function showCard(con, item) {
   selectedItem = { con, item };
@@ -243,8 +243,10 @@ function showCard(con, item) {
     `<div class="desc">${item.desc}</div>`;
   if (item.title === 'Who Am I') {
     detailPanel.classList.add('who-am-i-mode');
+    detailPanel.classList.remove('compact-mode');
   } else {
     detailPanel.classList.remove('who-am-i-mode');
+    detailPanel.classList.add('compact-mode');
   }
   detailOverlay.classList.add('show');
 }
@@ -388,7 +390,7 @@ function loop(ts) {
       ctx.fillText('Welcome to Crystal\'s Universe', W / 2, landingTitleY);
       ctx.font = '500 24px "Cormorant Garamond", serif';
       ctx.fillStyle = `rgba(255, 255, 255, ${0.82 * welcomeFade})`;
-      ctx.fillText('Have fun exploring the stars!', W / 2, landingSubtitleY);
+      ctx.fillText('have fun exploring the stars!', W / 2, landingSubtitleY);
     }
   }
 
@@ -496,9 +498,9 @@ function loop(ts) {
       const labelAlpha = (zoomProgress - 0.68) / 0.32;
       con.items.forEach((item) => {
         const s = con.stars[item.star];
-        ctx.font = '500 19px "Cormorant Garamond", serif';
+        ctx.font = '500 14px "Cormorant Garamond", serif';
         ctx.fillStyle = `rgba(222,230,252,${0.9 * labelAlpha})`;
-        ctx.fillText(item.label, s.x, s.y - 14);
+        ctx.fillText(item.label, s.x, s.y - 11);
       });
     }
   });

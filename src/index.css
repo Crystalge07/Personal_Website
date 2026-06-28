@@ -105,6 +105,39 @@ html, body {
   overflow: hidden;
 }
 
+#detailPanel.compact-mode {
+  width: min(520px, 72vw);
+  min-height: unset;
+  max-height: 50vh;
+  padding: 22px 26px;
+}
+
+#detailPanel.compact-mode .kicker {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+}
+
+#detailPanel.compact-mode .title {
+  margin-top: 6px;
+  font-size: clamp(20px, 2.6vw, 30px);
+}
+
+#detailPanel.compact-mode .date {
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+#detailPanel.compact-mode .desc {
+  margin-top: 14px;
+  padding-top: 14px;
+  font-size: clamp(14px, 1.2vw, 16px);
+  line-height: 1.55;
+}
+
+#detailPanel.compact-mode .heart-list li {
+  margin-bottom: 4px;
+}
+
 #detailPanel.who-am-i-mode .desc {
   margin-top: 16px;
   padding-top: 16px;
