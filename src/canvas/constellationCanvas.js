@@ -14,6 +14,10 @@ export function initConstellationCanvas(canvas, callbacks) {
   const REF_W = 1400;
   const REF_H = 900;
   const BASE_HIT_RADIUS = 198;
+  const SKY_TEXT_OPACITY = 0.88;
+  function skyText(alpha = 1) {
+    return `rgba(255, 255, 255, ${SKY_TEXT_OPACITY * alpha})`;
+  }
   let W = 1400, H = 900;
   let starScale = 1;
 
@@ -377,10 +381,10 @@ export function initConstellationCanvas(canvas, callbacks) {
       if (welcomeFade > 0.02) {
         ctx.textAlign = 'center';
         ctx.font = '500 40px "Cormorant Garamond", serif';
-        ctx.fillStyle = `rgba(255, 255, 255, ${0.9 * welcomeFade})`;
+        ctx.fillStyle = skyText(welcomeFade);
         ctx.fillText('Welcome to Crystal\'s Universe', W / 2, landingTitleY);
         ctx.font = '500 24px "Cormorant Garamond", serif';
-        ctx.fillStyle = `rgba(255, 255, 255, ${0.82 * welcomeFade})`;
+        ctx.fillStyle = skyText(welcomeFade);
         ctx.fillText('Have fun exploring the stars!', W / 2, landingSubtitleY);
       }
     }
@@ -474,8 +478,7 @@ export function initConstellationCanvas(canvas, callbacks) {
       const maxY = Math.max(...con.stars.map((p) => p.y));
       const nameAlpha = (activeConstellation !== -1 && ci !== activeConstellation) ? (1 - zoomProgress) : 1;
       ctx.font = '500 18px "Cormorant Garamond", serif';
-      const nameWhite = isSkyHoverThis ? 0.96 : 0.74;
-      ctx.fillStyle = `rgba(255,255,255,${nameWhite * nameAlpha})`;
+      ctx.fillStyle = skyText(nameAlpha);
       ctx.textAlign = 'center';
       if (activeConstellation === ci && zoomProgress > 0) {
         const focus = con;
@@ -490,7 +493,7 @@ export function initConstellationCanvas(canvas, callbacks) {
         con.items.forEach((item) => {
           const s = con.stars[item.star];
           ctx.font = '500 14px "Cormorant Garamond", serif';
-          ctx.fillStyle = `rgba(222,230,252,${0.9 * labelAlpha})`;
+          ctx.fillStyle = skyText(labelAlpha);
           ctx.fillText(item.label, s.x, s.y - 11);
         });
       }

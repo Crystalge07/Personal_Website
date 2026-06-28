@@ -52,7 +52,8 @@ html, body {
   border-radius: 2px;
   border: 1px solid rgba(8, 12, 26, 0.12);
   background: #f8f6f2;
-  color: rgba(45, 48, 62, 0.85);
+  --panel-text: rgba(55, 58, 72, 0.85);
+  color: var(--panel-text);
   box-shadow: none;
   font-family: "Cormorant Garamond", serif;
   text-align: left;
@@ -63,7 +64,7 @@ html, body {
   font-weight: 500;
   letter-spacing: 0.36em;
   text-transform: uppercase;
-  color: rgba(72, 82, 118, 0.85);
+  color: var(--panel-text);
 }
 
 #detailPanel .title {
@@ -71,13 +72,13 @@ html, body {
   font-size: clamp(28px, 3.4vw, 44px);
   font-weight: 500;
   line-height: 1.08;
-  color: rgba(12, 14, 22, 0.94);
+  color: var(--panel-text);
 }
 
 #detailPanel .date {
   margin-top: 8px;
   font-size: 23px;
-  color: rgba(55, 58, 72, 0.78);
+  color: var(--panel-text);
 }
 
 #detailPanel .desc {
@@ -86,18 +87,18 @@ html, body {
   border-top: 1px solid rgba(8, 12, 26, 0.08);
   font-size: clamp(17px, 1.5vw, 21px);
   line-height: 1.6;
-  color: rgba(55, 58, 72, 0.82);
+  color: var(--panel-text);
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
 
 #detailPanel a {
-  color: rgba(72, 82, 118, 0.9);
-  text-decoration-color: rgba(72, 82, 118, 0.45);
+  color: var(--panel-text);
+  text-decoration-color: rgba(55, 58, 72, 0.35);
 }
 
 #detailPanel a:hover {
-  color: rgba(55, 58, 72, 0.98);
+  color: var(--panel-text);
   text-decoration-color: rgba(55, 58, 72, 0.65);
 }
 
@@ -170,7 +171,7 @@ html, body {
   align-self: flex-start;
   font-size: clamp(17px, 1.5vw, 21px);
   line-height: 1.65;
-  color: rgba(55, 58, 72, 0.82);
+  color: var(--panel-text);
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
@@ -191,5 +192,5 @@ html, body {
   content: '♡';
   position: absolute;
   left: 0;
-  color: rgba(72, 82, 118, 0.75);
+  color: var(--panel-text);
 }
